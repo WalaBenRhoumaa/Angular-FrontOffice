@@ -1,0 +1,33 @@
+<div *ngIf="errorMessage" class="error-message">
+  <p>{{ errorMessage }}</p>
+</div>
+
+<div *ngIf="feedbacks.length > 0; else noFeedback">
+  <ul>
+    <li *ngFor="let feedback of feedbacks">
+      <h3>{{ feedback.message }}</h3>
+      <p><strong>Date:</strong> {{ feedback.date | date:'medium' }}</p>
+      <p><strong>Reactions:</strong> {{ feedback.reacts?.length || 0 }}</p>
+
+      <ul *ngIf="feedback.reacts && feedback.reacts.length > 0">
+        <li *ngFor="let react of feedback.reacts">
+          <span>
+            🗨️ {{ getReactionEmoji(react.reaction) }} by user {{ react.user?.name || 'Unknown' }}
+          </span>
+        </li>
+      </ul>
+
+      <!-- Add reaction buttons with emojis -->
+      <div>
+        <button *ngFor="let reaction of reactions"
+                (click)="addReaction(feedback, reaction)">
+          {{ getButtonEmoji(reaction) }} {{ getButtonLabel(reaction) }}
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<ng-template #noFeedback>
+  <p>No feedbacks available</p>
+</ng-template>

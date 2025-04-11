@@ -1,0 +1,18 @@
+<div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+  
+  <div *ngIf="reacts.length > 0; else noReacts">
+    <ul>
+      <li *ngFor="let react of reacts">
+        <p><strong>Reaction:</strong> {{ react.reaction }}</p>
+        <p><strong>Date:</strong> {{ react.date | date }}</p>
+        <p><strong>User:</strong> {{ react.user?.name }}</p>
+      </li>
+    </ul>
+  </div>
+  
+  <ng-template #noReacts>
+    <p>No reacts available.</p>
+  </ng-template>
+  
