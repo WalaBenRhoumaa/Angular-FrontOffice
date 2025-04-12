@@ -1,0 +1,115 @@
+/* General container styles */
+ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  /* Style for each feedback item */
+  li {
+    background: #f9f9f9;
+    margin-bottom: 16px;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  
+  /* Title styles */
+  h3 {
+    margin-top: 0;
+    color: #333;
+  }
+  
+  /* Error message styles */
+  .error-message {
+    background-color: #ffe6e6;
+    color: #d8000c;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+  
+  /* Reaction emoji styling */
+  ul.reactions {
+    padding-left: 20px;
+  }
+  
+  .reaction-item {
+    font-size: 0.9em;
+    color: #555;
+  }
+  
+  /* Button styles for each reaction */
+  button {
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 12px;
+    margin-right: 8px;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Styling for reaction buttons based on their type */
+  button.like {
+    background-color: #e0f7fa;
+  }
+  
+  button.dislike {
+    background-color: #e2e3e5;
+  }
+  
+  button.love {
+    background-color: #fde2e2;
+  }
+  
+  button.laugh {
+    background-color: #fff3cd;
+  }
+  
+  button.sad {
+    background-color: #d1ecf1;
+  }
+  
+  button.angry {
+    background-color: #f8d7da;
+  }
+
+  .reaction-emoji {
+    transition: transform 0.3s ease;  /* Smooth transition */
+  }
+  
+  .reaction-emoji:hover {
+    transform: scale(1.5);  /* Make the emoji 1.5 times bigger */
+  }
+
+  .reaction-emoji {
+    display: inline-block;
+    transition: transform 0.2s ease; /* Smooth transition for scaling */
+  }
+  
+  
+  .reaction-emoji:hover {
+    transform: scale(1.5); /* Increase the size by 1.5 times */
+  }
+  .reaction-button {
+    font-size: 18px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .reaction-button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  
+  
+  

@@ -11,19 +11,29 @@
 
       <ul *ngIf="feedback.reacts && feedback.reacts.length > 0">
         <li *ngFor="let react of feedback.reacts">
-          <span>
+          <span class="reaction-emoji" 
+                (mouseover)="onMouseOver($event)" 
+                (mouseout)="onMouseOut($event)">
             🗨️ {{ getReactionEmoji(react.reaction) }} by user {{ react.user?.name || 'Unknown' }}
           </span>
         </li>
       </ul>
+      
+      
+      
+      
 
       <!-- Add reaction buttons with emojis -->
       <div>
         <button *ngFor="let reaction of reactions"
+                class="reaction-button"
+                (mouseover)="scaleUp($event)"
+                (mouseout)="scaleDown($event)"
                 (click)="addReaction(feedback, reaction)">
           {{ getButtonEmoji(reaction) }} {{ getButtonLabel(reaction) }}
         </button>
       </div>
+      
     </li>
   </ul>
 </div>

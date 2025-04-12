@@ -84,4 +84,31 @@ export class FeedbackListComponent implements OnInit {
   getButtonLabel(reaction: Reaction): string {
     return this.reactionButtonEmojis[reaction]?.label || 'Unknown';
   }
+
+
+  // Mouse over event handler
+  onMouseOver(event: MouseEvent): void {
+    const emojiElement = event.target as HTMLElement;
+    emojiElement.style.transform = 'scale(1.5)';  // Enlarge the emoji
+  }
+
+  // Mouse out event handler
+  onMouseOut(event: MouseEvent): void {
+    const emojiElement = event.target as HTMLElement;
+    emojiElement.style.transform = 'scale(1)';  // Reset the emoji to original size
+  }
+  scaleUp(event: MouseEvent): void {
+    const button = event.target as HTMLElement;
+    button.style.transition = 'transform 0.2s ease'; // Smooth transition
+    button.style.transform = 'scale(1.2)'; // Scale up by 1.2 times
+  }
+  
+  scaleDown(event: MouseEvent): void {
+    const button = event.target as HTMLElement;
+    button.style.transition = 'transform 0.2s ease'; // Smooth transition
+    button.style.transform = 'scale(1)'; // Reset to original size
+  }
+  
+
 }
+
