@@ -8,4 +8,5 @@ export interface Feedback {
   date: string;
   item?: Item;
   reacts?: Reacts[];
+  showReacts?: boolean; // Ajouté pour usage UI
 }

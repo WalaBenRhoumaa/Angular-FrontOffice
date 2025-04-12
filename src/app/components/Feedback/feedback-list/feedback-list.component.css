@@ -97,18 +97,215 @@ ul {
     transform: scale(1.5); /* Increase the size by 1.5 times */
   }
   .reaction-button {
-    font-size: 18px;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #f0f0f0;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-  }
+  font-size: 1.6rem;           /* Bigger emoji & text */
+  padding: 30px 50px;          /* Bigger button */
+  border: none;
+  border-radius: 30px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  margin: 6px;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
   
   .reaction-button:hover {
     background-color: #e0e0e0;
   }
+
+  p {
+    cursor: pointer;
+  }
+  /* Container and error message styling */
+.error-message {
+  background-color: #ffe6e6;
+  color: #d8000c;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Style for each feedback item */
+li {
+  background: #f9f9f9;
+  margin-bottom: 16px;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Feedback header (if you want to add more details) */
+h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+/* Toggle reaction count styling */
+.reactions-count {
+  cursor: pointer;
+  color: #007bff;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.reactions-count:hover {
+  color: #0056b3;
+}
+
+/* Reaction list emoji styling */
+.reaction-emoji {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  margin-right: 6px;
+}
+
+/* Reaction button styling */
+.reaction-button {
+  font-size: 1.4rem;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 12px;
+  margin-right: 8px;
+  margin-top: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.reaction-button:hover {
+  filter: brightness(1.2);
+  transform: scale(1.3);
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-window {
+  background: #1c1e21;
+  border-radius: 10px;
+  width: 400px;
+  max-height: 80vh;
+  overflow: hidden;
+  color: #fff;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  background: #242526;
+  border-bottom: 1px solid #3a3b3c;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+}
+
+.tab {
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.modal-body {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.modal-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.modal-body li {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #3a3b3c;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.reaction-emoji {
+  font-size: 1.1rem;
+  margin-right: 10px;
+  transition: transform 0.2s;
+  display: inline-block;
+}
+
+.reaction-button {
+  margin: 5px;
+  padding: 6px 12px;
+  font-size: 0.95rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.reaction-buttons {
+  margin-top: 10px;
+}
+.react-user {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #3a3b3c;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.username {
+  margin-right: 8px;
+  font-weight: 500;
+}
+
+.emoji {
+  font-size: 18px;
+}
+
+
+  
   
   
   
