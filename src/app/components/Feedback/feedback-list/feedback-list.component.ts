@@ -112,12 +112,11 @@ export class FeedbackListComponent implements OnInit {
     feedback.showReacts = !feedback.showReacts;
   }
 
-  // Modal logic
   openReactionModal(feedback: Feedback): void {
     this.activeFeedback = feedback;
+    console.log('Modal opened for feedback:', feedback); // ← ajoute ceci
     this.selectedTab = 'ALL';
   }
-
   closeModal(): void {
     this.activeFeedback = null;
   }

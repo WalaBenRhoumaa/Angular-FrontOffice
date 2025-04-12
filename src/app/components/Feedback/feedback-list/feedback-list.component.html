@@ -6,33 +6,18 @@
 <!-- Liste des feedbacks -->
 <div *ngIf="feedbacks.length > 0; else noFeedback">
   <ul>
-    <li *ngFor="let feedback of feedbacks">
+    <li *ngFor="let feedback of feedbacks; trackBy: trackByFeedbackId">
       <h3>{{ feedback.message }}</h3>
 
       <p>
         <strong>Date:</strong> {{ feedback.date | date:'medium' }}
       </p>
 
-      <!-- Toggle pour afficher ou cacher les réactions -->
+      <!-- Nombre de réactions (ouvre la modal) -->
       <p class="reactions-count" (click)="openReactionModal(feedback)" style="cursor: pointer;">
         <strong>Reactions:</strong> {{ feedback.reacts?.length || 0 }}
-        <span *ngIf="feedback.showReacts">&#9650;</span>
-        <span *ngIf="!feedback.showReacts">&#9660;</span>
+        &#128065; <!-- 👁️ -->
       </p>
-
-      <!-- Liste des réactions -->
-      <ul *ngIf="feedback.showReacts && feedback.reacts?.length">
-        <li *ngFor="let react of feedback.reacts" class="react-user">
-          <!-- Avatar avec initiales -->
-          <div class="avatar">
-            {{ getInitials(react.user?.name || 'U') }}
-          </div>
-
-          <!-- Nom utilisateur + emoji réaction -->
-          <span class="username">{{ react.user?.name || 'Anonymous' }}</span>
-          <span class="emoji">{{ getReactionEmoji(react.reaction) }}</span>
-        </li>
-      </ul>
 
       <!-- Boutons pour ajouter une réaction -->
       <div class="reaction-buttons">
@@ -54,3 +39,40 @@
 <ng-template #noFeedback>
   <p>No feedbacks available</p>
 </ng-template>
+
+<!-- Fenêtre popup des réactions -->
+<div class="modal-backdrop" *ngIf="activeFeedback" (click)="closeModal()"></div>
+<div class="modal" *ngIf="activeFeedback">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Reactions for: {{ activeFeedback.message }}</h2>
+
+    <!-- Onglets de filtrage -->
+    <div class="tabs">
+      <button (click)="selectTab('ALL')" [class.active]="selectedTab === 'ALL'">All</button>
+      <button *ngFor="let reaction of reactions"
+              (click)="selectTab(reaction)"
+              [class.active]="selectedTab === reaction">
+        {{ getButtonEmoji(reaction) }} {{ getButtonLabel(reaction) }}
+        ({{ getReactionCount(activeFeedback.reacts || [], reaction) }}
+        )
+      </button>
+    </div>
+
+    <!-- Liste des réactions filtrées -->
+    <ul *ngIf="filteredReacts.length > 0; else noReacts">
+      <li *ngFor="let react of filteredReacts" class="react-user">
+        <div class="avatar">
+          {{ getInitials(react.user?.name || 'U') }}
+        </div>
+        <span class="username">{{ react.user?.name || 'Anonymous' }}</span>
+        <span class="emoji">{{ getReactionEmoji(react.reaction) }}</span>
+      </li>
+    </ul>
+
+    <!-- Aucun résultat -->
+    <ng-template #noReacts>
+      <p>No reactions found for this filter.</p>
+    </ng-template>
+  </div>
+</div>
